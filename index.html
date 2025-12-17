@@ -9,7 +9,6 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#ea580c">
-    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/3132/3132693.png">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
@@ -19,13 +18,13 @@
             font-family: 'Inter', sans-serif; 
             background: #f8fafc; 
             touch-action: manipulation;
-            -webkit-tap-highlight-color: transparent;
             overscroll-behavior-y: contain;
+            -webkit-tap-highlight-color: transparent;
         }
-        .pizza-spin { animation: spin 3s linear infinite; font-size: 50px; }
+        .pizza-spin { animation: spin 2s linear infinite; font-size: 60px; }
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         #loader { transition: opacity 0.5s ease; }
-        input[type="range"] { accent-color: #ea580c; height: 12px; }
+        input[type="range"] { accent-color: #ea580c; height: 16px; }
     </style>
     
     <script type="importmap">
@@ -48,22 +47,11 @@
 <body>
     <div id="loader" class="fixed inset-0 bg-white flex flex-col items-center justify-center z-[100]">
         <div class="pizza-spin">🍕</div>
-        <p class="mt-4 font-black text-slate-300 uppercase tracking-widest text-[10px] animate-pulse">PizzaTaxi HACCP Digital</p>
+        <p class="mt-6 font-black text-slate-400 uppercase tracking-[0.3em] text-xs animate-pulse">PizzaTaxi HACCP Digital</p>
     </div>
 
     <div id="root"></div>
     
     <script type="module" src="./index.tsx"></script>
-
-    <script>
-      // Failsafe per evitare il caricamento infinito se uno script fallisce
-      setTimeout(() => {
-        const loader = document.getElementById('loader');
-        if (loader && loader.style.display !== 'none') {
-          loader.style.opacity = '0';
-          setTimeout(() => loader.style.display = 'none', 500);
-        }
-      }, 3500);
-    </script>
 </body>
 </html>
