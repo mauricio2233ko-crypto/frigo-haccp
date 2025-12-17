@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>PizzaTaxi HACCP Pro</title>
     
-    <!-- PWA Config -->
     <link rel="manifest" href="./manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -25,15 +24,10 @@
         }
         .pizza-spin { animation: spin 3s linear infinite; font-size: 50px; }
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        
         #loader { transition: opacity 0.5s ease; }
-        
-        /* Ottimizzazione slider per tablet */
-        input[type="range"] {
-            accent-color: #ea580c;
-            height: 10px;
-        }
+        input[type="range"] { accent-color: #ea580c; height: 12px; }
     </style>
+    
     <script type="importmap">
 {
   "imports": {
@@ -54,23 +48,22 @@
 <body>
     <div id="loader" class="fixed inset-0 bg-white flex flex-col items-center justify-center z-[100]">
         <div class="pizza-spin">🍕</div>
-        <p class="mt-4 font-black text-slate-300 uppercase tracking-widest text-[10px] animate-pulse">Caricamento PizzaTaxi...</p>
+        <p class="mt-4 font-black text-slate-300 uppercase tracking-widest text-[10px] animate-pulse">PizzaTaxi HACCP Digital</p>
     </div>
 
     <div id="root"></div>
     
-    <!-- Il file index.tsx viene gestito dal compilatore dell'ambiente di sviluppo -->
     <script type="module" src="./index.tsx"></script>
 
     <script>
-      // Failsafe: se l'app non parte entro 4 secondi, nascondiamo il loader per sicurezza
+      // Failsafe per evitare il caricamento infinito se uno script fallisce
       setTimeout(() => {
-        const l = document.getElementById('loader');
-        if (l && l.style.display !== 'none') {
-          l.style.opacity = '0';
-          setTimeout(() => l.style.display = 'none', 500);
+        const loader = document.getElementById('loader');
+        if (loader && loader.style.display !== 'none') {
+          loader.style.opacity = '0';
+          setTimeout(() => loader.style.display = 'none', 500);
         }
-      }, 4000);
+      }, 3500);
     </script>
 </body>
 </html>
